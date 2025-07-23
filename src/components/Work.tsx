@@ -89,7 +89,7 @@ const Work = () => {
     { id: 'ai', label: 'AI Projects', icon: <CpuIcon size={18} /> },
     { id: 'web', label: 'Web Apps', icon: <Globe size={18} /> },
     { id: 'mobile', label: 'Mobile Apps', icon: <Smartphone size={18} /> },
-    { id: 'cloud', label: 'Cloud Solutions', icon: <Cloud size={18} /> }
+    
   ];
 
 useEffect(() => {
