@@ -186,11 +186,11 @@ const Skills = () => {
           {/* All Skills Cloud */}
           <div className="bg-white/60 backdrop-blur-sm rounded-2xl p-8 shadow-lg border border-gray-200/50">
             <h3 className="text-2xl font-bold text-gray-800 mb-6">Complete Skillset</h3>
-            <div className="flex flex-wrap gap-3 text-black">
+            <div className="flex flex-wrap gap-3 text-black ">
               {allSkills.map((skill, index) => (
                 <span 
                   key={index}
-                  className="bg-white/80 backdrop-blur-sm border border-gray-200 px-4 py-2 rounded-full text-sm font-medium shadow-sm hover:shadow-md transition-all duration-300 hover:scale-105 hover:bg-gradient-to-r hover:from-blue-500 hover:to-purple-500 hover:text-white hover:border-transparent"
+                  className="bg-white/80 backdrop-blur-sm border cursor-pointer border-gray-200 px-4 py-2 rounded-full text-sm font-medium shadow-sm hover:shadow-md transition-all duration-300 hover:scale-105 hover:bg-gradient-to-r hover:from-blue-500 hover:to-purple-500 hover:text-white hover:border-transparent"
                   style={{ 
                     animationDelay: `${index * 50}ms`,
                     fontSize: `${Math.random() * 6 + 12}px`,
