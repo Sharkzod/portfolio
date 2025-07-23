@@ -112,8 +112,8 @@ const About = () => {
         </div>
 
         {/* Tab Navigation */}
-        <div className={`flex justify-center mb-12 transition-all duration-1000 delay-200 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-          <div className="bg-white/60 backdrop-blur-sm rounded-full p-2 shadow-lg border border-gray-200">
+        <div className={`flex justify-center m-auto items-center mb-12 transition-all duration-1000 delay-200 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+          <div className="flex justify-between bg-white/60 w-[100%] sm:w-[65%] backdrop-blur-sm rounded-full p-2 shadow-lg border border-gray-200">
             {[
               { id: 'story', label: 'My Story' },
               { id: 'expertise', label: 'Expertise' },
@@ -122,7 +122,7 @@ const About = () => {
               <button
                 key={tab.id}
                 onClick={() => setActiveTab(tab.id)}
-                className={`px-6 py-3 rounded-full font-medium transition-all duration-300 ${
+                className={`px-4 sm:px-6 py-3 rounded-full font-medium transition-all duration-300 ${
                   activeTab === tab.id
                     ? 'bg-gradient-to-r from-blue-600 to-purple-600 text-white shadow-lg'
                     : 'text-gray-600 hover:text-blue-600 hover:bg-white/50'
