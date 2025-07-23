@@ -209,7 +209,7 @@ const Skills = () => {
                 {[
                   "AI-Powered Web Applications",
                   "Full Stack Architecture",
-                  "Cloud-Native Solutions",
+                  
                   "Performance Optimization",
                   "Secure Development Practices"
                 ].map((item, index) => (
