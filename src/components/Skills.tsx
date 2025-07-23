@@ -128,7 +128,7 @@ const Skills = () => {
 
         {/* Category Navigation */}
         <div className={`flex flex-wrap justify-center gap-4 mb-12 transition-all duration-1000 delay-200 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-         // Update your category navigation section to explicitly type the key
+       
 {Object.entries(skillCategories).map(([key, category]) => {
   const categoryKey = key as keyof SkillCategories;
   return (
