@@ -34,18 +34,18 @@ const About = () => {
       description: 'Robust API development and microservices architecture',
       color: 'from-green-500 to-green-600'
     },
-    {
-      icon: Globe,
-      title: 'Cloud Deployment',
-      description: 'Cloud-native applications with CI/CD pipelines',
-      color: 'from-orange-500 to-orange-600'
-    },
-    {
-      icon: Database,
-      title: 'Data Engineering',
-      description: 'Efficient data pipelines and analytics solutions',
-      color: 'from-pink-500 to-pink-600'
-    },
+    // {
+    //   icon: Globe,
+    //   title: 'Cloud Deployment',
+    //   description: 'Cloud-native applications with CI/CD pipelines',
+    //   color: 'from-orange-500 to-orange-600'
+    // },
+    // {
+    //   icon: Database,
+    //   title: 'Data Engineering',
+    //   description: 'Efficient data pipelines and analytics solutions',
+    //   color: 'from-pink-500 to-pink-600'
+    // },
     {
       icon: Shield,
       title: 'Security & Performance',
@@ -240,9 +240,8 @@ const About = () => {
                 <div className="flex flex-wrap gap-3 justify-center">
                   {[
                     'JavaScript/TypeScript', 'Python', 'React/Next.js', 'Node.js', 
-                    'TensorFlow', 'PyTorch', 'LLM Integration', 'REST/GraphQL',
-                    'MongoDB', 'PostgreSQL', 'Docker', 'AWS/GCP',
-                    'CI/CD Pipelines', 'Microservices', 'Computer Vision', 'NLP'
+                    'PyTorch', 'LLM Integration', 'REST',
+                    'MongoDB','Microservices', 'Computer Vision', 'NLP'
                   ].map((skill, index) => (
                     <span 
                       key={skill} 
