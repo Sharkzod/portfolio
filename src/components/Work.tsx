@@ -15,6 +15,7 @@ type Project = {
   tags: string[];
   category: string;
   image: string;
+  info: string;
   links: {
     live: string;
     code: string;
@@ -28,7 +29,6 @@ const Work = () => {
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
   const sectionRef = useRef(null);
 
-
   // Sample projects data - replace with your actual projects
   const projects = [
     {
@@ -37,6 +37,7 @@ const Work = () => {
       description: "A Broker platform for trading Bitcoin and Etherium",
       tags: ["Javascript","Next", "Tailwind", "Node.js", "MongoDB", "Microservices"],
       category: "web",
+      info: "StorxByte Broker is a full-stack cryptocurrency trading platform that allows users to trade major digital assets such as Bitcoin and Ethereum. The platform was designed with a focus on performance, scalability, and modern UI/UX principles. Built using a microservices architecture, the application ensures modularity and easier maintenance. The frontend is developed with Next.js and Tailwind CSS, delivering a fast, SEO-optimized, and responsive user interface. On the backend, it leverages Node.js and MongoDB to handle real-time transactions, user authentication, and data storage efficiently.",
       image: "/sta.jpg",
       links: {
         live: "https://staupdate-frontend.pages.dev/",
@@ -54,6 +55,9 @@ const Work = () => {
       description: "An online platform for managing international cargo shipments",
       tags: ["TypeScript","Next", "Tailwind", "Node", "TypeScript","Microservices"],
       category: "web",
+      info: `International Cargo is a robust web-based logistics platform designed to manage and track international cargo shipments efficiently. The system simplifies freight operations by providing a digital interface for managing shipment details, tracking progress, and coordinating logistics in real time.
+
+Built with TypeScript across both the frontend and backend, the platform ensures type safety and improved developer experience. It leverages a microservices architecture for scalability and separation of concerns. The frontend uses Next.js and Tailwind CSS to deliver a clean, responsive UI, while the backend is structured with Node.js and modular service components.`,
       image: "/online.png",
       links: {
         live: "https://international-cargo-ship.onrender.com/",
@@ -70,6 +74,7 @@ const Work = () => {
       title: "E-commerce Application",
       description: "An e-commerce platform",
       tags: ["TypeScript","Next", "Tailwind", "Node", "TypeScript","Microservices"],
+      info: `E-commerce Application is a comprehensive online shopping platform that allows users to browse products, manage their carts, and complete purchases seamlessly. The application is built with a focus on user experience, performance, and scalability.`,
       category: "web",
       image: "/ecommerce.png",
       links: {
@@ -77,9 +82,9 @@ const Work = () => {
         code: "https://github.com/example"
       },
       features: [
-        "Natural language processing",
-        "Context-aware responses",
-        "Seamless human handoff"
+        "Easy Shopping",
+        "Secure Payment Processing",
+        "Product Search and Filtering",
       ]
     }
   ];
@@ -89,34 +94,33 @@ const Work = () => {
     { id: 'ai', label: 'AI Projects', icon: <CpuIcon size={18} /> },
     { id: 'web', label: 'Web Apps', icon: <Globe size={18} /> },
     { id: 'mobile', label: 'Mobile Apps', icon: <Smartphone size={18} /> },
-    
   ];
 
-useEffect(() => {
-  const observer = new IntersectionObserver(
-    ([entry]) => {
-      if (entry.isIntersecting) {
-        setIsVisible(true);
-        observer.unobserve(entry.target);
-        
-        // Cast elements to HTMLElement to access style property
-        document.querySelectorAll<HTMLElement>('.project-card').forEach((card, index) => {
-          card.style.transitionDelay = `${index * 100}ms`;
-        });
-        document.querySelectorAll<HTMLElement>('.project-feature').forEach((feature, index) => {
-          feature.style.transitionDelay = `${index * 50}ms`;
-        });
-      }
-    },
-    { threshold: 0.1 }
-  );
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+          observer.unobserve(entry.target);
+          
+          // Cast elements to HTMLElement to access style property
+          document.querySelectorAll<HTMLElement>('.project-card').forEach((card, index) => {
+            card.style.transitionDelay = `${index * 100}ms`;
+          });
+          document.querySelectorAll<HTMLElement>('.project-feature').forEach((feature, index) => {
+            feature.style.transitionDelay = `${index * 50}ms`;
+          });
+        }
+      },
+      { threshold: 0.1 }
+    );
 
-  if (sectionRef.current) {
-    observer.observe(sectionRef.current);
-  }
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
 
-  return () => observer.disconnect();
-}, []);
+    return () => observer.disconnect();
+  }, []);
 
   const filteredProjects = activeFilter === 'all' 
     ? projects 
@@ -264,18 +268,7 @@ useEffect(() => {
                   <div className="md:col-span-2">
                     <h4 className="text-xl font-semibold text-gray-800 mb-4">Project Overview</h4>
                     <div className="space-y-4 text-gray-600">
-                      <p>
-                        This project was developed to solve [specific problem] for [target audience]. 
-                        As the [your role], I was responsible for [your specific contributions].
-                      </p>
-                      <p>
-                        The technical stack combines {selectedProject.tags.slice(0, 3).join(', ')} 
-                        to deliver a {selectedProject.description.toLowerCase()}.
-                      </p>
-                      <p>
-                        Key challenges included [specific technical challenge] which was overcome 
-                        by [your innovative solution].
-                      </p>
+                      <p className="leading-relaxed whitespace-pre-line">{selectedProject.info}</p>
                     </div>
                   </div>
 
