@@ -2,9 +2,8 @@
 
 import React, { useState, useEffect, useRef } from 'react';
 import { 
-  Code, Cpu, Database, Server, Cloud, GitBranch, Shield, 
-  Layers, CpuIcon, Zap, CircuitBoard, BrainCircuit, 
-  ToolCase
+  Code, Cpu, Server, BrainCircuit, ToolCase, 
+  Zap, Layers, Rocket, CpuIcon, Target
 } from 'lucide-react';
 
 type SkillCategory = {
@@ -36,7 +35,7 @@ const Skills = () => {
       title: "Frontend Mastery",
       icon: <Code className="w-6 h-6" />,
       description: "Crafting pixel-perfect, responsive interfaces with modern frameworks",
-      color: "from-blue-500 to-blue-600",
+      color: "from-slate-600 to-slate-800",
       skills: [
         { name: "React", level: 90 },
         { name: "Next.js", level: 95 },
@@ -49,7 +48,7 @@ const Skills = () => {
       title: "Backend Engineering",
       icon: <Server className="w-6 h-6" />,
       description: "Building robust, scalable server-side architectures",
-      color: "from-purple-500 to-purple-600",
+      color: "from-blue-600 to-blue-800",
       skills: [
         { name: "Node.js", level: 90 },
         { name: "Express", level: 85 },
@@ -61,7 +60,7 @@ const Skills = () => {
       title: "AI Integration",
       icon: <BrainCircuit className="w-6 h-6" />,
       description: "Implementing intelligent features with machine learning",
-      color: "from-green-500 to-green-600",
+      color: "from-amber-600 to-orange-500",
       skills: [
         { name: "Python", level: 80 },
         { name: "PyTorch", level: 80 },
@@ -75,7 +74,7 @@ const Skills = () => {
       title: "Tools",
       icon: <ToolCase className="w-6 h-6" />,
       description: "Collaborating and building with the best tools",
-      color: "from-orange-500 to-orange-600",
+      color: "from-purple-600 to-purple-800",
       skills: [
         { name: "git", level: 85 },
         { name: "gitHub", level: 95 },
@@ -107,59 +106,70 @@ const Skills = () => {
   }, []);
 
   return (
-    <div className="relative bg-gradient-to-br from-gray-50 via-white to-indigo-50 py-20 px-4" id="skills" ref={sectionRef}>
-      {/* Background Elements */}
-      <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute top-1/4 left-10 w-64 h-64 bg-blue-200 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-pulse"></div>
-        <div className="absolute bottom-1/3 right-20 w-80 h-80 bg-purple-200 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-pulse delay-1000"></div>
+    <div className="relative bg-gradient-to-br from-slate-50 via-gray-50 to-slate-100 py-24 px-4 overflow-hidden" id="skills" ref={sectionRef}>
+      {/* Enhanced Background Elements */}
+      <div className="absolute inset-0">
+        <div className="absolute top-20 left-10 w-96 h-96 bg-gradient-to-br from-slate-200/40 to-slate-300/20 rounded-full mix-blend-multiply filter blur-3xl animate-float"></div>
+        <div className="absolute top-40 right-20 w-80 h-80 bg-gradient-to-br from-amber-200/30 to-orange-200/20 rounded-full mix-blend-multiply filter blur-3xl animate-float-delay-1"></div>
+        <div className="absolute bottom-40 left-20 w-72 h-72 bg-gradient-to-br from-slate-300/40 to-gray-200/30 rounded-full mix-blend-multiply filter blur-3xl animate-float-delay-2"></div>
+      </div>
+
+      {/* Professional Floating Icons */}
+      <div className="absolute top-32 right-32 animate-bounce delay-1000">
+        <Layers className="w-8 h-8 text-slate-400 opacity-60" />
+      </div>
+      <div className="absolute bottom-32 left-32 animate-bounce delay-2000">
+        <Rocket className="w-7 h-7 text-amber-500 opacity-60" />
+      </div>
+      <div className="absolute top-48 left-48 animate-bounce delay-3000">
+        <CpuIcon className="w-6 h-6 text-slate-500 opacity-60" />
       </div>
 
       <div className="relative z-10 container mx-auto max-w-7xl">
-        {/* Header */}
+        {/* Enhanced Header */}
         <div className={`text-center mb-16 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-          <h2 className="text-4xl md:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-gray-900 via-blue-600 to-purple-600 mb-4">
+          <h2 className="text-4xl md:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-slate-800 via-slate-700 to-slate-600 mb-4">
             Technical Expertise
           </h2>
-          <p className="text-xl text-gray-600 mt-4 max-w-2xl mx-auto">
+          <p className="text-xl text-slate-600 mt-4 max-w-2xl mx-auto">
             My comprehensive toolkit for building intelligent, scalable applications
           </p>
-          <div className="w-24 h-1 bg-gradient-to-r from-blue-600 to-purple-600 mx-auto rounded-full mt-6"></div>
+          <div className="w-24 h-1 bg-gradient-to-r from-slate-600 to-slate-800 mx-auto rounded-full mt-6"></div>
         </div>
 
-        {/* Category Navigation */}
+        {/* Enhanced Category Navigation */}
         <div className={`flex flex-wrap justify-center gap-4 mb-12 transition-all duration-1000 delay-200 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-       
-{Object.entries(skillCategories).map(([key, category]) => {
-  const categoryKey = key as keyof SkillCategories;
-  return (
-    <button
-      key={key}
-      onClick={() => setActiveCategory(categoryKey)}
-      className={`px-6 py-3 rounded-full font-medium transition-all duration-300 flex items-center gap-2 ${
-        activeCategory === categoryKey
-          ? 'bg-gradient-to-r from-blue-600 to-purple-600 text-white shadow-lg'
-          : 'bg-white/60 backdrop-blur-sm text-gray-600 hover:text-blue-600 border border-gray-200'
-      }`}
-    >
-      {category.icon}
-      {category.title}
-    </button>
-  );
-})}
+          {Object.entries(skillCategories).map(([key, category]) => {
+            const categoryKey = key as keyof SkillCategories;
+            return (
+              <button
+                key={key}
+                onClick={() => setActiveCategory(categoryKey)}
+                className={`px-6 py-3 rounded-full font-medium transition-all duration-300 flex items-center gap-2 ${
+                  activeCategory === categoryKey
+                    ? 'bg-gradient-to-r from-slate-800 to-slate-700 text-white shadow-lg'
+                    : 'bg-white/80 backdrop-blur-sm text-slate-600 hover:text-slate-800 border border-slate-200'
+                }`}
+              >
+                {category.icon}
+                {category.title}
+              </button>
+            );
+          })}
         </div>
 
         {/* Main Content */}
         <div className={`grid grid-cols-1 lg:grid-cols-3 gap-8 transition-all duration-500 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
           {/* Selected Category Details */}
           <div className="lg:col-span-2">
-            <div className="bg-white/60 backdrop-blur-sm rounded-2xl p-8 shadow-lg border border-gray-200/50 h-full">
+            <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-8 shadow-lg border border-slate-200/50 h-full">
               <div className="flex items-center mb-6">
-                <div className={`w-14 h-14 rounded-xl bg-gradient-to-br ${skillCategories[activeCategory].color} flex items-center justify-center mr-4`}>
+                <div className={`w-14 h-14 rounded-xl bg-gradient-to-br ${skillCategories[activeCategory].color} flex items-center justify-center mr-4 shadow-md`}>
                   {skillCategories[activeCategory].icon}
                 </div>
                 <div>
-                  <h3 className="text-2xl font-bold text-gray-800">{skillCategories[activeCategory].title}</h3>
-                  <p className="text-gray-600">{skillCategories[activeCategory].description}</p>
+                  <h3 className="text-2xl font-bold text-slate-800">{skillCategories[activeCategory].title}</h3>
+                  <p className="text-slate-600">{skillCategories[activeCategory].description}</p>
                 </div>
               </div>
 
@@ -168,10 +178,10 @@ const Skills = () => {
                 {skillCategories[activeCategory].skills.map((skill, index) => (
                   <div key={index}>
                     <div className="flex justify-between mb-2">
-                      <span className="font-medium text-gray-800">{skill.name}</span>
-                      <span className="text-gray-500">{skill.level}%</span>
+                      <span className="font-medium text-slate-800">{skill.name}</span>
+                      <span className="text-slate-500">{skill.level}%</span>
                     </div>
-                    <div className="w-full bg-gray-200 rounded-full h-2.5">
+                    <div className="w-full bg-slate-200 rounded-full h-2.5">
                       <div 
                         className={`h-2.5 rounded-full bg-gradient-to-r ${skillCategories[activeCategory].color}`}
                         style={{ width: `${skill.level}%` }}
@@ -183,14 +193,14 @@ const Skills = () => {
             </div>
           </div>
 
-          {/* All Skills Cloud */}
-          <div className="bg-white/60 backdrop-blur-sm rounded-2xl p-8 shadow-lg border border-gray-200/50">
-            <h3 className="text-2xl font-bold text-gray-800 mb-6">Complete Skillset</h3>
-            <div className="flex flex-wrap gap-3 text-black ">
+          {/* Enhanced All Skills Cloud */}
+          <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-8 shadow-lg border border-slate-200/50">
+            <h3 className="text-2xl font-bold text-slate-800 mb-6">Complete Skillset</h3>
+            <div className="flex flex-wrap gap-3 text-slate-800">
               {allSkills.map((skill, index) => (
                 <span 
                   key={index}
-                  className="bg-white/80 backdrop-blur-sm border cursor-pointer border-gray-200 px-4 py-2 rounded-full text-sm font-medium shadow-sm hover:shadow-md transition-all duration-300 hover:scale-105 hover:bg-gradient-to-r hover:from-blue-500 hover:to-purple-500 hover:text-white hover:border-transparent"
+                  className="bg-white/90 backdrop-blur-sm border cursor-pointer border-slate-200 px-4 py-2 rounded-full text-sm font-medium shadow-sm hover:shadow-md transition-all duration-300 hover:scale-105 hover:bg-gradient-to-r hover:from-slate-800 hover:to-slate-700 hover:text-white hover:border-transparent"
                   style={{ 
                     animationDelay: `${index * 50}ms`,
                     fontSize: `${Math.random() * 6 + 12}px`,
@@ -204,18 +214,17 @@ const Skills = () => {
 
             {/* Expertise Highlights */}
             <div className="mt-8">
-              <h4 className="text-lg font-semibold text-gray-800 mb-4">Specialized In:</h4>
+              <h4 className="text-lg font-semibold text-slate-800 mb-4">Specialized In:</h4>
               <div className="space-y-4">
                 {[
                   "AI-Powered Web Applications",
                   "Full Stack Architecture",
-                  
                   "Performance Optimization",
                   "Secure Development Practices"
                 ].map((item, index) => (
                   <div key={index} className="flex items-center">
-                    <div className="w-2 h-2 bg-blue-600 rounded-full mr-3"></div>
-                    <span className="text-gray-700">{item}</span>
+                    <div className="w-2 h-2 bg-slate-800 rounded-full mr-3"></div>
+                    <span className="text-slate-700">{item}</span>
                   </div>
                 ))}
               </div>
@@ -223,24 +232,24 @@ const Skills = () => {
           </div>
         </div>
 
-        {/* Certification & Achievements */}
-        {/* <div className={`mt-12 transition-all duration-500 delay-300 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-          <div className="bg-gradient-to-r from-blue-600 to-purple-600 rounded-2xl p-8 shadow-xl">
+        {/* Enhanced Certification & Achievements */}
+        <div className={`mt-12 transition-all duration-500 delay-300 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+          <div className="bg-gradient-to-r from-slate-800 to-slate-700 rounded-2xl p-8 shadow-xl">
             <h3 className="text-2xl font-bold text-white mb-6">Certifications & Milestones</h3>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               {[
                 {
-                  title: "AWS Certified Developer",
-                  icon: <Cloud className="w-8 h-8 text-white" />,
-                  description: "Expertise in cloud architecture and deployment"
+                  title: "AI Specialist",
+                  icon: <BrainCircuit className="w-8 h-8 text-white" />,
+                  description: "Expertise in AI integration and implementation"
                 },
                 {
-                  title: "TensorFlow Developer",
-                  icon: <CpuIcon className="w-8 h-8 text-white" />,
-                  description: "Certified in building and training ML models"
+                  title: "Full Stack Developer",
+                  icon: <Code className="w-8 h-8 text-white" />,
+                  description: "Certified in modern web development"
                 },
                 {
-                  title: "100+ Projects",
+                  title: "10+ Projects",
                   icon: <Layers className="w-8 h-8 text-white" />,
                   description: "Delivered production-grade applications"
                 }
@@ -257,8 +266,51 @@ const Skills = () => {
               ))}
             </div>
           </div>
-        </div> */}
+        </div>
       </div>
+
+      <style jsx>{`
+        @keyframes spin-slow {
+          from { transform: rotate(0deg); }
+          to { transform: rotate(360deg); }
+        }
+        @keyframes float {
+          0%, 100% { 
+            transform: translateY(0px) rotate(0deg); 
+          }
+          50% { 
+            transform: translateY(-20px) rotate(180deg); 
+          }
+        }
+        @keyframes float-delay-1 {
+          0%, 100% { 
+            transform: translateY(0px) rotate(0deg); 
+          }
+          50% { 
+            transform: translateY(-15px) rotate(-180deg); 
+          }
+        }
+        @keyframes float-delay-2 {
+          0%, 100% { 
+            transform: translateY(0px) rotate(0deg); 
+          }
+          50% { 
+            transform: translateY(-25px) rotate(90deg); 
+          }
+        }
+        .animate-spin-slow {
+          animation: spin-slow 12s linear infinite;
+        }
+        .animate-float {
+          animation: float 6s ease-in-out infinite;
+        }
+        .animate-float-delay-1 {
+          animation: float-delay-1 8s ease-in-out infinite;
+        }
+        .animate-float-delay-2 {
+          animation: float-delay-2 10s ease-in-out infinite;
+        }
+      `}</style>
     </div>
   );
 };

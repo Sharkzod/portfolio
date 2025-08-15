@@ -2,12 +2,10 @@
 
 import React, { useState, useEffect, useRef } from 'react';
 import { 
-  Code, Cpu, Database, Globe, Server, 
-  ExternalLink, Github, ArrowRight, Filter,
-  LayoutTemplate, CpuIcon, Cloud, Smartphone
+  Code, Cpu, ExternalLink, Github, ArrowRight, 
+  LayoutTemplate, CpuIcon, Smartphone, X, Check
 } from 'lucide-react';
 
-// Define the Project type
 type Project = {
   id: number;
   title: string;
@@ -29,7 +27,6 @@ const Work = () => {
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
   const sectionRef = useRef(null);
 
-  // Sample projects data - replace with your actual projects
   const projects = [
     {
       id: 1,
@@ -92,7 +89,7 @@ Built with TypeScript across both the frontend and backend, the platform ensures
   const filters = [
     { id: 'all', label: 'All Projects', icon: <LayoutTemplate size={18} /> },
     { id: 'ai', label: 'AI Projects', icon: <CpuIcon size={18} /> },
-    { id: 'web', label: 'Web Apps', icon: <Globe size={18} /> },
+    { id: 'web', label: 'Web Apps', icon: <Code size={18} /> },
     { id: 'mobile', label: 'Mobile Apps', icon: <Smartphone size={18} /> },
   ];
 
@@ -103,7 +100,6 @@ Built with TypeScript across both the frontend and backend, the platform ensures
           setIsVisible(true);
           observer.unobserve(entry.target);
           
-          // Cast elements to HTMLElement to access style property
           document.querySelectorAll<HTMLElement>('.project-card').forEach((card, index) => {
             card.style.transitionDelay = `${index * 100}ms`;
           });
@@ -127,26 +123,35 @@ Built with TypeScript across both the frontend and backend, the platform ensures
     : projects.filter(project => project.category === activeFilter);
 
   return (
-    <div className="relative bg-gradient-to-br from-gray-50 via-white to-blue-50 py-20 px-4" id="work" ref={sectionRef}>
-      {/* Background Elements */}
-      <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute top-20 left-10 w-64 h-64 bg-blue-200 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-pulse"></div>
-        <div className="absolute bottom-20 right-20 w-80 h-80 bg-purple-200 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-pulse delay-1000"></div>
+    <div className="relative bg-gradient-to-br from-slate-50 via-gray-50 to-slate-100 py-24 px-4 overflow-hidden" id="work" ref={sectionRef}>
+      {/* Enhanced Background Elements */}
+      <div className="absolute inset-0">
+        <div className="absolute top-20 left-10 w-96 h-96 bg-gradient-to-br from-slate-200/40 to-slate-300/20 rounded-full mix-blend-multiply filter blur-3xl animate-float"></div>
+        <div className="absolute top-40 right-20 w-80 h-80 bg-gradient-to-br from-amber-200/30 to-orange-200/20 rounded-full mix-blend-multiply filter blur-3xl animate-float-delay-1"></div>
+        <div className="absolute bottom-40 left-20 w-72 h-72 bg-gradient-to-br from-slate-300/40 to-gray-200/30 rounded-full mix-blend-multiply filter blur-3xl animate-float-delay-2"></div>
+      </div>
+
+      {/* Professional Floating Icons */}
+      <div className="absolute top-32 right-32 animate-bounce delay-1000">
+        <Code className="w-8 h-8 text-slate-400 opacity-60" />
+      </div>
+      <div className="absolute bottom-32 left-32 animate-bounce delay-2000">
+        <Cpu className="w-7 h-7 text-amber-500 opacity-60" />
       </div>
 
       <div className="relative z-10 container mx-auto max-w-7xl">
-        {/* Header */}
+        {/* Enhanced Header */}
         <div className={`text-center mb-16 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-          <h2 className="text-4xl md:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-gray-900 via-blue-600 to-purple-600 mb-4">
+          <h2 className="text-4xl md:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-slate-800 via-slate-700 to-slate-600 mb-4">
             My Projects
           </h2>
-          <p className="text-xl text-gray-600 mt-4 max-w-2xl mx-auto">
+          <p className="text-xl text-slate-600 mt-4 max-w-2xl mx-auto">
             A selection of my recent work showcasing full-stack and AI capabilities
           </p>
-          <div className="w-24 h-1 bg-gradient-to-r from-blue-600 to-purple-600 mx-auto rounded-full mt-6"></div>
+          <div className="w-24 h-1 bg-gradient-to-r from-slate-600 to-slate-800 mx-auto rounded-full mt-6"></div>
         </div>
 
-        {/* Filters */}
+        {/* Enhanced Filters */}
         <div className={`flex flex-wrap justify-center gap-3 mb-12 transition-all duration-1000 delay-200 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
           {filters.map(filter => (
             <button
@@ -154,8 +159,8 @@ Built with TypeScript across both the frontend and backend, the platform ensures
               onClick={() => setActiveFilter(filter.id)}
               className={`px-4 py-2 rounded-full font-medium transition-all duration-300 flex items-center gap-2 text-sm ${
                 activeFilter === filter.id
-                  ? 'bg-gradient-to-r from-blue-600 to-purple-600 text-white shadow-lg'
-                  : 'bg-white/60 backdrop-blur-sm text-gray-600 hover:text-blue-600 border border-gray-200'
+                  ? 'bg-gradient-to-r from-slate-800 to-slate-700 text-white shadow-lg'
+                  : 'bg-white/80 backdrop-blur-sm text-slate-600 hover:text-slate-800 border border-slate-200'
               }`}
             >
               {filter.icon}
@@ -169,10 +174,10 @@ Built with TypeScript across both the frontend and backend, the platform ensures
           {filteredProjects.map(project => (
             <div 
               key={project.id}
-              className={`project-card bg-white/60 backdrop-blur-sm rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-200/50 ${isVisible ? 'opacity-100' : 'opacity-0 translate-y-10'}`}
+              className={`project-card bg-white/80 backdrop-blur-sm rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 border border-slate-200/50 ${isVisible ? 'opacity-100' : 'opacity-0 translate-y-10'}`}
               onClick={() => setSelectedProject(project)}
             >
-              <div className="h-48 bg-gradient-to-br from-blue-100 to-purple-100 relative overflow-hidden">
+              <div className="h-48 bg-gradient-to-br from-slate-100 to-slate-200 relative overflow-hidden">
                 <img 
                   src={project.image} 
                   alt={project.title}
@@ -183,16 +188,16 @@ Built with TypeScript across both the frontend and backend, the platform ensures
                 </div>
               </div>
               <div className="p-6">
-                <p className="text-gray-600 mb-4">{project.description}</p>
+                <p className="text-slate-600 mb-4">{project.description}</p>
                 <div className="flex flex-wrap gap-2 mb-4">
                   {project.tags.map(tag => (
-                    <span key={tag} className="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-xs font-medium">
+                    <span key={tag} className="bg-slate-100 text-slate-800 px-3 py-1 rounded-full text-xs font-medium">
                       {tag}
                     </span>
                   ))}
                 </div>
                 <div className="flex justify-between items-center">
-                  <button className="text-blue-600 hover:text-blue-800 font-medium flex items-center gap-1 transition-colors">
+                  <button className="text-slate-800 hover:text-slate-900 font-medium flex items-center gap-1 transition-colors">
                     View Details <ArrowRight size={16} />
                   </button>
                   <div className="flex gap-3">
@@ -201,7 +206,7 @@ Built with TypeScript across both the frontend and backend, the platform ensures
                         href={project.links.live} 
                         target="_blank" 
                         rel="noopener noreferrer"
-                        className="text-gray-500 hover:text-blue-600 transition-colors"
+                        className="text-slate-500 hover:text-blue-600 transition-colors"
                         onClick={e => e.stopPropagation()}
                       >
                         <ExternalLink size={18} />
@@ -212,7 +217,7 @@ Built with TypeScript across both the frontend and backend, the platform ensures
                         href={project.links.code} 
                         target="_blank" 
                         rel="noopener noreferrer"
-                        className="text-gray-500 hover:text-gray-800 transition-colors"
+                        className="text-slate-500 hover:text-slate-800 transition-colors"
                         onClick={e => e.stopPropagation()}
                       >
                         <Github size={18} />
@@ -225,7 +230,7 @@ Built with TypeScript across both the frontend and backend, the platform ensures
           ))}
         </div>
 
-        {/* Project Modal */}
+        {/* Enhanced Project Modal */}
         {selectedProject && (
           <div className="fixed mt-[53px] inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4">
             <div 
@@ -233,7 +238,7 @@ Built with TypeScript across both the frontend and backend, the platform ensures
               onClick={e => e.stopPropagation()}
             >
               {/* Modal Header */}
-              <div className="relative h-64 bg-gradient-to-br from-blue-100 to-purple-100 overflow-hidden">
+              <div className="relative h-64 bg-gradient-to-br from-slate-100 to-slate-200 overflow-hidden">
                 <img 
                   src={selectedProject.image} 
                   alt={selectedProject.title}
@@ -243,10 +248,7 @@ Built with TypeScript across both the frontend and backend, the platform ensures
                   className="absolute top-4 right-4 bg-white/80 backdrop-blur-sm p-2 rounded-full shadow-lg hover:bg-white transition-colors cursor-pointer"
                   onClick={() => setSelectedProject(null)}
                 >
-                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="black" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                    <line x1="18" y1="6" x2="6" y2="18"></line>
-                    <line x1="6" y1="6" x2="18" y2="18"></line>
-                  </svg>
+                  <X className="w-5 h-5 text-slate-800" />
                 </button>
                 <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-6">
                   <h3 className="text-2xl font-bold text-white">{selectedProject.title}</h3>
@@ -258,7 +260,7 @@ Built with TypeScript across both the frontend and backend, the platform ensures
               <div className="p-8">
                 <div className="flex flex-wrap gap-2 mb-6">
                   {selectedProject.tags.map(tag => (
-                    <span key={tag} className="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-medium">
+                    <span key={tag} className="bg-slate-100 text-slate-800 px-3 py-1 rounded-full text-sm font-medium">
                       {tag}
                     </span>
                   ))}
@@ -266,36 +268,36 @@ Built with TypeScript across both the frontend and backend, the platform ensures
 
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
                   <div className="md:col-span-2">
-                    <h4 className="text-xl font-semibold text-gray-800 mb-4">Project Overview</h4>
-                    <div className="space-y-4 text-gray-600">
+                    <h4 className="text-xl font-semibold text-slate-800 mb-4">Project Overview</h4>
+                    <div className="space-y-4 text-slate-600">
                       <p className="leading-relaxed whitespace-pre-line">{selectedProject.info}</p>
                     </div>
                   </div>
 
                   <div>
-                    <h4 className="text-xl font-semibold text-gray-800 mb-4">Project Details</h4>
+                    <h4 className="text-xl font-semibold text-slate-800 mb-4">Project Details</h4>
                     <div className="space-y-3">
                       <div>
-                        <span className="text-sm text-gray-500">Category</span>
-                        <p className="font-medium capitalize text-gray-500">{selectedProject.category}</p>
+                        <span className="text-sm text-slate-500">Category</span>
+                        <p className="font-medium capitalize text-slate-500">{selectedProject.category}</p>
                       </div>
                       <div>
-                        <span className="text-sm text-gray-500">Timeline</span>
-                        <p className="font-medium text-gray-500">1.5 months</p>
+                        <span className="text-sm text-slate-500">Timeline</span>
+                        <p className="font-medium text-slate-500">1.5 months</p>
                       </div>
                       <div>
-                        <span className="text-sm text-gray-500">Technologies</span>
-                        <p className="font-medium text-gray-500">{selectedProject.tags.join(', ')}</p>
+                        <span className="text-sm text-slate-500">Technologies</span>
+                        <p className="font-medium text-slate-500">{selectedProject.tags.join(', ')}</p>
                       </div>
                     </div>
 
-                    <div className="mt-6 gap-3 w-[55%]">
+                    <div className="mt-6 space-y-3">
                       {selectedProject.links.live && (
                         <a 
                           href={selectedProject.links.live} 
                           target="_blank" 
                           rel="noopener noreferrer"
-                          className="bg-blue-600 hover:bg-blue-700 text-white px-2 py-2 rounded-lg font-medium flex items-center gap-2 transition-colors mb-[20px]"
+                          className="bg-slate-800 hover:bg-slate-900 text-white px-4 py-3 rounded-lg font-medium flex items-center justify-center gap-2 transition-colors"
                         >
                           <ExternalLink size={16} /> Live Demo
                         </a>
@@ -305,7 +307,7 @@ Built with TypeScript across both the frontend and backend, the platform ensures
                           href={selectedProject.links.code} 
                           target="_blank" 
                           rel="noopener noreferrer"
-                          className="bg-gray-800 hover:bg-gray-900 text-white px-4 py-2 rounded-lg font-medium flex items-center gap-2 transition-colors"
+                          className="bg-slate-100 hover:bg-slate-200 text-slate-800 px-4 py-3 rounded-lg font-medium flex items-center justify-center gap-2 transition-colors border border-slate-200"
                         >
                           <Github size={16} /> View Code
                         </a>
@@ -315,20 +317,18 @@ Built with TypeScript across both the frontend and backend, the platform ensures
                 </div>
 
                 <div>
-                  <h4 className="text-xl font-semibold text-gray-800 mb-4">Key Features</h4>
+                  <h4 className="text-xl font-semibold text-slate-800 mb-4">Key Features</h4>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     {selectedProject.features.map((feature, index) => (
                       <div 
                         key={index}
-                        className="project-feature bg-gray-50 rounded-xl p-4 border border-gray-200 hover:border-blue-200 transition-colors"
+                        className="project-feature bg-slate-50 rounded-xl p-4 border border-slate-200 hover:border-slate-300 transition-colors"
                       >
                         <div className="flex items-start gap-3">
-                          <div className="bg-blue-100 text-blue-600 p-2 rounded-lg">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                              <polyline points="20 6 9 17 4 12"></polyline>
-                            </svg>
+                          <div className="bg-slate-800 text-white p-2 rounded-lg">
+                            <Check className="w-4 h-4" />
                           </div>
-                          <p className="text-gray-700">{feature}</p>
+                          <p className="text-slate-700">{feature}</p>
                         </div>
                       </div>
                     ))}
@@ -339,19 +339,55 @@ Built with TypeScript across both the frontend and backend, the platform ensures
           </div>
         )}
 
-        {/* CTA */}
+        {/* Enhanced CTA */}
         <div className={`text-center mt-16 transition-all duration-500 delay-500 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-          <h3 className="text-2xl font-bold text-gray-800 mb-6">Want to see more of my work?</h3>
+          <h3 className="text-2xl font-bold text-slate-800 mb-6">Want to see more of my work?</h3>
           <a 
             href="https://github.com/Barclay-bank" 
             target="_blank" 
             rel="noopener noreferrer"
-            className="inline-flex items-center bg-gray-800 hover:bg-gray-900 text-white px-8 py-4 rounded-lg font-medium transition-colors shadow-lg"
+            className="inline-flex items-center bg-slate-800 hover:bg-slate-900 text-white px-8 py-4 rounded-lg font-medium transition-colors shadow-lg"
           >
             <Github className="mr-2" /> Visit My GitHub
           </a>
         </div>
       </div>
+
+      <style jsx>{`
+        @keyframes float {
+          0%, 100% { 
+            transform: translateY(0px) rotate(0deg); 
+          }
+          50% { 
+            transform: translateY(-20px) rotate(180deg); 
+          }
+        }
+        @keyframes float-delay-1 {
+          0%, 100% { 
+            transform: translateY(0px) rotate(0deg); 
+          }
+          50% { 
+            transform: translateY(-15px) rotate(-180deg); 
+          }
+        }
+        @keyframes float-delay-2 {
+          0%, 100% { 
+            transform: translateY(0px) rotate(0deg); 
+          }
+          50% { 
+            transform: translateY(-25px) rotate(90deg); 
+          }
+        }
+        .animate-float {
+          animation: float 6s ease-in-out infinite;
+        }
+        .animate-float-delay-1 {
+          animation: float-delay-1 8s ease-in-out infinite;
+        }
+        .animate-float-delay-2 {
+          animation: float-delay-2 10s ease-in-out infinite;
+        }
+      `}</style>
     </div>
   );
 };
