@@ -83,8 +83,44 @@ Built with TypeScript across both the frontend and backend, the platform ensures
         "Secure Payment Processing",
         "Product Search and Filtering",
       ]
-    }
-  ];
+    },
+
+    {
+  id: 4,
+  title: "GradeMate",
+  description: "An AI-powered exam grading bot",
+  tags: [
+    "Python", 
+    "Flask", 
+    "MongoDB", 
+    "pdfplumber", 
+    "docx", 
+    "TypeScript", 
+    "Next", 
+    "Tailwind", 
+    "Node", 
+    "Microservices"
+  ],
+  info: `GradeMate is an intelligent exam grading system that automates the evaluation of student responses. 
+  It accepts multiple file formats (TXT, PDF, DOCX), parses student details and answers, compares them with an answer key, 
+  and generates accurate results instantly. Built with Flask, MongoDB, and modern web technologies (Next.js, TypeScript, Tailwind CSS, Node.js), 
+  the system is designed for scalability and seamless integration with microservices.`,
+  category: "ai",
+  image: "/grademate.png",
+  links: {
+    live: "https://grademates.netlify.app/", 
+    code: "https://github.com/Sharkzod/Exam-Grader" 
+  },
+  features: [
+    "Upload exams in multiple formats (TXT, PDF, DOCX)",
+    "Automatic parsing of student names and answers",
+    "Instant grading with accurate scoring",
+    "MongoDB integration for result storage",
+    "Error handling for invalid or incomplete data",
+    "Built with scalable microservices architecture"
+  ]
+}
+]
 
   const filters = [
     { id: 'all', label: 'All Projects', icon: <LayoutTemplate size={18} /> },
