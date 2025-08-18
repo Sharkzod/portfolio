@@ -106,7 +106,7 @@ Built with TypeScript across both the frontend and backend, the platform ensures
   and generates accurate results instantly. Built with Flask, MongoDB, and modern web technologies (Next.js, TypeScript, Tailwind CSS, Node.js), 
   the system is designed for scalability and seamless integration with microservices.`,
   category: "ai",
-  image: "/grademate.png",
+  image: "/gradeMates.png",
   links: {
     live: "https://grademates.netlify.app/", 
     code: "https://github.com/Sharkzod/Exam-Grader" 
